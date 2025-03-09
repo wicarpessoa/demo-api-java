@@ -1,7 +1,11 @@
 package com.br.demo.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class CategoriaRequestDTO {
-    private Long id;
+    @NotBlank(message = "O nome não pode estar em branco")
+    @Size(min = 3, max = 50, message = "O nome deve ter entre 3 e 50 caracteres")
     private String nome;
     private String descricao;
 
@@ -11,17 +15,8 @@ public class CategoriaRequestDTO {
     }
 
     public CategoriaRequestDTO(Long id, String nome, String descricao) {
-        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {
